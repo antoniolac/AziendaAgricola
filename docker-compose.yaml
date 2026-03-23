@@ -1,0 +1,45 @@
+services:
+  web:
+    build: .
+    container_name: AziendaAgricola
+    ports:
+      - "${PORT_PHP}:80"
+    environment:
+      - DB_NAME=${DB}
+      - DB_USER=${USER}
+      - DB_PASS=${PASSWORD}
+      - DB_HOST=db
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8.0
+    container_name: AziendaAgricola-DB
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${ROOTPWD}
+      MYSQL_DATABASE: ${DB}
+      MYSQL_USER: ${USER}
+      MYSQL_PASSWORD: ${PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+
+volumes:
+  db_data:
+
+networks:
+  app-network:
+    driver: bridge
