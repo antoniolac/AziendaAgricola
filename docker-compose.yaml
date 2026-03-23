@@ -36,6 +36,22 @@ services:
       timeout: 5s
       retries: 5
 
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: AziendaAgricola-PMA
+    restart: always
+    ports:
+      - "${PORT_ADMIN}:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: ${USER}
+      PMA_PASSWORD: ${PASSWORD}
+      UPLOAD_LIMIT: 50M
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app-network
 
 volumes:
   db_data:
