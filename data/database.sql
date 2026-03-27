@@ -62,8 +62,8 @@ CREATE TABLE EVENTO (
     id_evento INT AUTO_INCREMENT PRIMARY KEY,
     data_evento DATE NOT NULL,
     tipo_evento ENUM('raccolta','smielatura','distillazione','smallatura','sgusciatura','essiccazione','confezionamento','lavorazione_generica') NOT NULL,
-    quantita_input DECIMAL(10,3),
-    quantita_output DECIMAL(10,3),
+    quantita_input  INT DEFAULT NULL,
+    quantita_output INT DEFAULT NULL,
     luogo_provenienza VARCHAR(150),
     note TEXT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

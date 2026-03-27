@@ -100,8 +100,8 @@ include __DIR__ . '/header.php';
                         <option value="<?= $t ?>"><?= ucfirst(str_replace('_',' ',$t)) ?></option>
                         <?php endforeach; ?></select>
                     </div>
-                    <div class="form-group"><label>Quantità Input</label><input type="number" name="quantita_input"  step="0.001" min="0"></div>
-                    <div class="form-group"><label>Quantità Output</label><input type="number" name="quantita_output" step="0.001" min="0"></div>
+                    <div class="form-group"><label>Quantità Input</label><input type="number" name="quantita_input"  step="1" min="0"></div>
+                    <div class="form-group"><label>Quantità Output</label><input type="number" name="quantita_output" step="1" min="0"></div>
                     <div class="form-group"><label>Luogo</label><input type="text" name="luogo_provenienza"></div>
                     <div class="form-group form-group--full"><label>Prodotti INPUT (materie prime) — CTRL per multipli</label>
                         <select name="input_prodotti[]" multiple size="5">
