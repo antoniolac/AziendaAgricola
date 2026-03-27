@@ -222,7 +222,7 @@ include __DIR__ . '/header.php';
                                 <option value="riserva_sfuso">Riserva sfuso</option>
                             </select>
                         </div>
-                        <div class="form-group" style="margin:0"><label>Q.tà</label><input type="number" name="quantita[]" class="qty" step="0.001" min="0.001" value="1" required></div>
+                        <div class="form-group" style="margin:0"><label>Q.tà</label><input type="number" name="quantita[]" class="qty" step="1" min="1" value="1" required></div>
                         <div class="form-group" style="margin:0"><label>Prezzo €</label><input type="number" name="prezzo_unit[]" class="price" step="0.01" min="0" value="0" required></div>
                         <div style="padding-bottom:.1rem"><label style="visibility:hidden">X</label><span class="row-total" style="font-weight:700;color:var(--terra);font-family:'Playfair Display',serif">€ 0.00</span></div>
                     </div>
