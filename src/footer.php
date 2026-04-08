@@ -5,7 +5,6 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* MODAL */
     document.querySelectorAll('[data-modal-open]').forEach(btn => {
         btn.addEventListener('click', () => {
             const overlay = document.getElementById(btn.getAttribute('data-modal-open'));
@@ -23,14 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* CONFIRM */
     document.querySelectorAll('[data-confirm]').forEach(btn => {
         btn.addEventListener('click', e => {
             if (!confirm(btn.getAttribute('data-confirm'))) e.preventDefault();
         });
     });
 
-    /* VENDITE — righe dinamiche + totale */
+   
     const righeContainer = document.getElementById('righe-vendita');
     const btnAddRow      = document.getElementById('btn-add-row');
     const grandTotalEl   = document.getElementById('grand-total');
