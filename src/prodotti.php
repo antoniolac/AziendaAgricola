@@ -186,7 +186,7 @@ include __DIR__ . '/header.php';
                     <div class="form-group"><label>Modalità Vendita</label>
                         <select name="vendita"><option value="a_peso">A Peso</option><option value="a_pezzo">A Pezzo</option></select>
                     </div>
-                    <div class="form-group"><label>Prezzo (€)</label><input type="number" name="prezzo" step="0.01" min="0"></div>
+                    <div class="form-group"><label>Prezzo (€)</label><input type="number" name="prezzo" step="0.1" min="0"></div>
                     <div class="form-group"><label>Luogo Provenienza</label><input type="text" name="luogo_provenienza"></div>
                 </div>
                 <div class="form-actions">

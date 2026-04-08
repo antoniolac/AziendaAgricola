@@ -1,38 +1,24 @@
--- ============================================================
--- AZIENDA AGRICOLA - Database Schema + Dati di esempio
--- ============================================================
+
 
 SET NAMES utf8mb4;
 SET time_zone = '+00:00';
 
-DROP TABLE IF EXISTS DETTAGLIO_VENDITA;
-DROP TABLE IF EXISTS VENDITA;
-DROP TABLE IF EXISTS MOV_MAGAZZINO;
-DROP TABLE IF EXISTS GIACENZA;
-DROP TABLE IF EXISTS E_OUTPUT_DI;
-DROP TABLE IF EXISTS E_INPUT_DI;
-DROP TABLE IF EXISTS EVENTO;
-DROP TABLE IF EXISTS PREZZO_STORICO;
-DROP TABLE IF EXISTS PRODOTTO;
-DROP TABLE IF EXISTS CATEGORIA;
-DROP TABLE IF EXISTS CLIENTE;
-DROP TABLE IF EXISTS LUOGO;
 
--- ============================================================
+ 
 CREATE TABLE LUOGO (
     id_luogo INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL UNIQUE,
     descrizione TEXT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ============================================================
+  
 CREATE TABLE CATEGORIA (
     id_categoria INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL UNIQUE,
     descrizione TEXT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ============================================================
+
 CREATE TABLE PRODOTTO (
     id_prodotto INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(150) NOT NULL,
@@ -47,7 +33,7 @@ CREATE TABLE PRODOTTO (
     FOREIGN KEY (id_categoria) REFERENCES CATEGORIA(id_categoria) ON DELETE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ============================================================
+ 
 CREATE TABLE PREZZO_STORICO (
     id_prezzo INT AUTO_INCREMENT PRIMARY KEY,
     prezzo_unitario DECIMAL(10,2) NOT NULL,
@@ -57,7 +43,7 @@ CREATE TABLE PREZZO_STORICO (
     FOREIGN KEY (id_prodotto) REFERENCES PRODOTTO(id_prodotto) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ============================================================
+ 
 CREATE TABLE EVENTO (
     id_evento INT AUTO_INCREMENT PRIMARY KEY,
     data_evento DATE NOT NULL,
@@ -68,7 +54,7 @@ CREATE TABLE EVENTO (
     note TEXT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ============================================================
+ 
 CREATE TABLE E_INPUT_DI (
     id_evento INT NOT NULL,
     id_prodotto INT NOT NULL,
@@ -77,7 +63,7 @@ CREATE TABLE E_INPUT_DI (
     FOREIGN KEY (id_prodotto) REFERENCES PRODOTTO(id_prodotto) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ============================================================
+  
 CREATE TABLE E_OUTPUT_DI (
     id_evento INT NOT NULL,
     id_prodotto INT NOT NULL,
@@ -86,7 +72,7 @@ CREATE TABLE E_OUTPUT_DI (
     FOREIGN KEY (id_prodotto) REFERENCES PRODOTTO(id_prodotto) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ============================================================
+  
 CREATE TABLE GIACENZA (
     id_giacenza INT AUTO_INCREMENT PRIMARY KEY,
     quantita_disponibile DECIMAL(10,3) NOT NULL DEFAULT 0,
@@ -95,7 +81,7 @@ CREATE TABLE GIACENZA (
     FOREIGN KEY (id_prodotto) REFERENCES PRODOTTO(id_prodotto) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ============================================================
+
 CREATE TABLE MOV_MAGAZZINO (
     id_movimento INT AUTO_INCREMENT PRIMARY KEY,
     data_movimento DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -106,7 +92,7 @@ CREATE TABLE MOV_MAGAZZINO (
     FOREIGN KEY (id_prodotto) REFERENCES PRODOTTO(id_prodotto) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ============================================================
+
 CREATE TABLE CLIENTE (
     id_cliente INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(150) NOT NULL,
@@ -116,7 +102,7 @@ CREATE TABLE CLIENTE (
     tipo_cliente ENUM('privato','famiglia','amico','collega','rivenditore','occasionale') NOT NULL DEFAULT 'privato'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ============================================================
+
 CREATE TABLE VENDITA (
     id_vendita INT AUTO_INCREMENT PRIMARY KEY,
     data_vendita DATE NOT NULL,
@@ -127,7 +113,7 @@ CREATE TABLE VENDITA (
     FOREIGN KEY (id_cliente) REFERENCES CLIENTE(id_cliente) ON DELETE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ============================================================
+
 CREATE TABLE DETTAGLIO_VENDITA (
     id_dettaglio INT AUTO_INCREMENT PRIMARY KEY,
     quantita DECIMAL(10,3) NOT NULL,
@@ -142,9 +128,7 @@ CREATE TABLE DETTAGLIO_VENDITA (
     FOREIGN KEY (id_prezzo) REFERENCES PREZZO_STORICO(id_prezzo) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ============================================================
--- DATI DI ESEMPIO
--- ============================================================
+ 
 
 INSERT INTO LUOGO (nome, descrizione) VALUES
 ('Dispensa Principale', 'Magazzino centrale di conservazione'),
@@ -261,9 +245,9 @@ INSERT INTO EVENTO (data_evento, tipo_evento, quantita_input, quantita_output, l
 INSERT INTO E_INPUT_DI (id_evento, id_prodotto) VALUES (1,8),(2,9),(3,11),(4,10),(5,13);
 INSERT INTO E_OUTPUT_DI (id_evento, id_prodotto) VALUES (1,15),(1,16),(2,17),(2,18),(3,24),(4,23),(5,19);
 
--- ============================================================
+--  
 -- TRIGGERS
--- ============================================================
+--  
 
 DELIMITER //
 

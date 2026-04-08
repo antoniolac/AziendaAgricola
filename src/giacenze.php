@@ -113,7 +113,7 @@ include __DIR__ . '/header.php';
                             <option value="rettifica">⚙ Rettifica</option>
                         </select>
                     </div>
-                    <div class="form-group"><label>Quantità *</label><input type="number" name="quantita" step="0.001" min="0.001" required></div>
+                    <div class="form-group"><label>Quantità *</label><input type="number" name="quantita" step="1" min="0.001" required></div>
                     <div class="form-group form-group--full"><label>Note</label><textarea name="note"></textarea></div>
                 </div>
                 <div class="form-actions">

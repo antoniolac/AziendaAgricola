@@ -223,7 +223,7 @@ include __DIR__ . '/header.php';
                             </select>
                         </div>
                         <div class="form-group" style="margin:0"><label>Q.tà</label><input type="number" name="quantita[]" class="qty" step="1" min="1" value="1" required></div>
-                        <div class="form-group" style="margin:0"><label>Prezzo €</label><input type="number" name="prezzo_unit[]" class="price" step="0.01" min="0" value="0" required></div>
+                        <div class="form-group" style="margin:0"><label>Prezzo €</label><input type="number" name="prezzo_unit[]" class="price" step="0.1" min="0" value="0" required></div>
                         <div style="padding-bottom:.1rem"><label style="visibility:hidden">X</label><span class="row-total" style="font-weight:700;color:var(--terra);font-family:'Playfair Display',serif">€ 0.00</span></div>
                     </div>
                 </div>
@@ -232,7 +232,7 @@ include __DIR__ . '/header.php';
                     <span style="font-weight:600">Totale Calcolato:</span>
                     <span id="grand-total" style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--terra)">€ 0.00</span>
                 </div>
-                <div class="form-group" style="max-width:220px"><label>Totale Pagato (se diverso)</label><input type="number" name="totale_pagato" step="0.01" min="0" placeholder="Lascia vuoto"></div>
+                <div class="form-group" style="max-width:220px"><label>Totale Pagato (se diverso)</label><input type="number" name="totale_pagato" step="0.1" min="0" placeholder="Lascia vuoto"></div>
                 <div class="form-actions">
                     <button type="submit" class="btn btn--primary btn--lg">💾 Salva Vendita</button>
                     <button type="button" class="btn btn--ghost modal-close">Annulla</button>
